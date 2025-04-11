@@ -22,6 +22,11 @@ public class Race
      */
     public Race(int distance)
     {
+        // first checks that the inputtes distance is not less than 0.
+        if (distance <= 0)
+        {
+            throw new IllegalArgumentException("Cannot Have Negative Race Length");
+        }
         // initialise instance variables
         raceLength = distance;
         lane1Horse = null;
