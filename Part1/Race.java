@@ -66,7 +66,7 @@ public class Race
         //declare a local variable to tell us when the race is finished
         boolean finished = false;
         
-        //reset all the lanes (all horses not fallen and back to 0). 
+        //reset all the lanes if the Horse declared is not of null value/ has no inputs.(all horses not fallen and back to 0). 
         if ( lane1Horse != null)
         {
             lane1Horse.goBackToStart(); 
@@ -139,6 +139,10 @@ public class Race
     {
         //if the horse has fallen it cannot move, 
         //so only run if it has not fallen
+        if(theHorse == null) 
+        {
+            return;
+        }
         if  (!theHorse.hasFallen())
         {
             //the probability that the horse will move forward depends on the confidence;
@@ -165,7 +169,7 @@ public class Race
      */
     private boolean raceWonBy(Horse theHorse)
     {
-        if(!theHorse.hasFallen())
+        if(theHorse != null && !theHorse.hasFallen())
         {
             if (theHorse.getDistanceTravelled() == raceLength)
             {
@@ -206,6 +210,14 @@ public class Race
      */
     private void printLane(Horse theHorse)
     {
+        if(theHorse == null)
+        {
+            System.out.print('|');
+            multiplePrint(' ',raceLength);
+            System.out.print('|');
+            System.out.print("");
+            return;
+        }
         //calculate how many spaces are needed before
         //and after the horse
         int spacesBefore = theHorse.getDistanceTravelled();
