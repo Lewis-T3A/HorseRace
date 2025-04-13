@@ -43,7 +43,23 @@ public class HorseCustom {
 
             JLabel accessoryLabel = new JLabel("Accessory:");
             accessoryChooser[i] = new JComboBox<>(new String[]{"none","Hat","Blanket","Birdle"});
+            
+            panel2.add(horseBreed);
+            panel2.add(breedChooser[i]);
+            panel2.add(horseColour);
+            panel2.add(colourChooser[i]);
+            panel2.add(horseSymbol);
+            panel2.add(symbolInput[i]);
+            panel2.add(saddleColour);
+            panel2.add(saddleChooser[i]);
+            panel2.add(horseShoeLabel);
+            panel2.add(horseshoeChooser[i]);
+            panel2.add(accessoryLabel);
+            panel2.add(accessoryChooser[i]);
+
+        frame2.add(panel2);
         }
+       
         frame2.add(panel2);
         frame2.setVisible(true);
        
