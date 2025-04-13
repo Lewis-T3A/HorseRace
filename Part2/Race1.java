@@ -189,6 +189,8 @@ public class Race1
         {
             theHorse.moveForward();
         }
+
+        
             
         //the probability that the horse will fall is very small (max is 0.1)
         //but will also will depends exponentially on confidence 
