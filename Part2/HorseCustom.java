@@ -8,7 +8,14 @@ public class HorseCustom {
         JPanel panel2 = new JPanel (new GridLayout(5,2,10,10));
         frame2.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        
+        JComboBox<String>[]breedChooser = new JComboBox[laneCount];
+        JComboBox<String>[]colourChooser = new JComboBox[laneCount];
+        JTextField[] symbolInput = new JTextField[laneCount];
+        JComboBox<String>[]saddleChooser = new JComboBox[laneCount];
+        JComboBox<String>[]horseshoeChooser = new JComboBox[laneCount];
+        JComboBox<String>[]accessoryChooser = new JComboBox[laneCount];
+
+
         //Horse Breed
         JLabel horseBreed = new JLabel("Horse Breed");
         JComboBox<String> breedChooser = new JComboBox<>(new String[]{"Arabian","Thoroughbred","Quarter Horse"});
