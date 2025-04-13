@@ -52,13 +52,17 @@ public class RaceGUI
 
             JOptionPane.showMessageDialog(frame1,"Track Length" + trackLength +"\n Lane Count" + laneCount + "\n Track Shape" + trackShape + "\n Weather Condition" + raceWeather );
         
-            for (int i = 0; i < laneCount; i++) {
+
+            Race1 Race = new Race1( trackLength, trackShape, raceWeather);
+
+            for (int i = 0; i < laneCount; i++) 
+            {
                 char symbol = (char) ('A' + i);
                 String name = "Horse " + (i + 1);
                 Horse1 horse = new Horse1(symbol, name, 0.6);
-                myRace.addHorse(horse, i + 1);
+                Race.addHorse(horse, i + 1);
             }
-            myRace.startRace();
+            Race.startRace();
         
         });
     }
