@@ -9,14 +9,10 @@ import java.util.concurrent.TimeUnit;
  */
 public class Race
 {
-    
     private int raceLength;
-    private String trackShape;
-    private String raceWeather;
     private Horse lane1Horse;
     private Horse lane2Horse;
     private Horse lane3Horse;
-    
 
     /**
      * Constructor for objects of class Race
@@ -24,7 +20,7 @@ public class Race
      * 
      * @param distance the length of the racetrack (in metres/yards...)
      */
-    public Race(int distance, String trackShape, String raceWeather)
+    public Race(int distance)
     {
         // first checks that the inputtes distance is not less than 0.
         if (distance <= 0)
@@ -32,8 +28,6 @@ public class Race
             throw new IllegalArgumentException("Cannot Have Negative Race Length");
         }
         // initialise instance variables
-        this.trackShape = trackShape;
-        this.raceWeather = raceWeather;
         raceLength = distance;
         lane1Horse = null;
         lane2Horse = null;
