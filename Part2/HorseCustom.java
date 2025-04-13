@@ -15,9 +15,27 @@ public class HorseCustom {
     //Coat Colour
     JLabel horseColour = new JLabel ( "Coat Colour");
     JComboBox<String> colourChooser = new JComboBox<>( new String[]{"Brown", "White","Black","Red","Golden","Spotted"});
-    //Symbol 
+    
+    //Symbol label and input
     JLabel horseSymbol = new JLabel ( "Horse Symbol ");
     JTextField symbolInput = new JTextField(1);
+    
     //Equipment and Accessories
     
+    //Saddle colour
+    JLabel saddleColour = new JLabel("Saddle:");
+    JComboBox<String> saddleChooser = new JComboBox<> (new String[]{"Black","White","Gold","Red","Blue"});
+
+    //HorseShoe type
+    JLabel horseShoeLabel = new JLabel ("HorseShoes:");
+    JComboBox<String> horseShoeChooser = new JComboBox<>(new String[]{"Light","Heavy","Regular"});
+
+    //Accessory
+
+    JLabel accessoryLabel = new JLabel("Accessory:");
+    JComboBox<String> accessoryChooser = new JComboBox<>(new String[]{"none","Hat","Blanket","Birdle"});
+
+    
+
+
 }
