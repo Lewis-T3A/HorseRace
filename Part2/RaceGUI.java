@@ -19,10 +19,10 @@ public class RaceGUI
         JSpinner laneMod = new JSpinner(new SpinnerNumberModel(2,2,10,1));
         // Track Shape
         JLabel shape = new JLabel( "Track Shape;" );
-        JComboBox<String> shapeChooser = new JComboBox<>(new String[]{"Cirlce","Line","Square"});
+        JComboBox<String> shapeChooser = new JComboBox<>(new String[]{"Figure-Eight","Zigzag","Line","Cirlce"});
         // Weather Condition
         JLabel Weather = new JLabel ( "Weather Condition:");
-        JComboBox<String> WeatherChooser = new JComboBox<>(new String[]{"Dry","Wet","Windy","Hot"});
+        JComboBox<String> WeatherChooser = new JComboBox<>(new String[]{"Dry","Muddy","Icy"});
         //Start Button
         JButton start = new JButton ("Start");
         
@@ -51,6 +51,15 @@ public class RaceGUI
             String raceWeather = (String) WeatherChooser.getSelectedItem();
 
             JOptionPane.showMessageDialog(frame1,"Track Length" + trackLength +"\n Lane Count" + laneCount + "\n Track Shape" + trackShape + "\n Weather Condition" + raceWeather );
+        
+            for (int i = 0; i < laneCount; i++) {
+                char symbol = (char) ('A' + i);
+                String name = "Horse " + (i + 1);
+                Horse1 horse = new Horse1(symbol, name, 0.6);
+                myRace.addHorse(horse, i + 1);
+            }
+            myRace.startRace();
+        
         });
     }
 }
