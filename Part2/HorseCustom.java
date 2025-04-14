@@ -62,11 +62,15 @@ public class HorseCustom {
 
         panel2.add(panelrow);
         }
-       
+        JButton Confirm = new JButton ("Confirm Changes");
+        panel2.add(new JLabel(""));
+        panel2.add(Confirm);
         frame2.add(panel2);
         frame2.setVisible(true);
-       
+        
     }
+    
+
 
     
     public static void main(String[] args) {
