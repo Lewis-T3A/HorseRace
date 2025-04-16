@@ -77,26 +77,20 @@ public class Race1
         while (!finished)
         {
             //move each horse
-            moveHorse(lane1Horse);
-            moveHorse(lane2Horse);
-            moveHorse(lane3Horse);
+            for(Horse1 horse: lane)
+            {
+                moveHorse(horse);
+            }
                         
             //print the race positions
             printRace();
             
             //checks if any horse has reached the end, and if so, will allocate it to the variable raceWinner, which will go through the final statement to print and make finished equal to true, ending the while loop.
             Horse1 raceWinner = null;
-            if(raceWonBy(lane1Horse))
+            for(Horse1 horse:lane)
             {
-                raceWinner = lane1Horse;
-            }
-            else if (raceWonBy(lane2Horse))
-            {
-                raceWinner = lane2Horse;
-            }
-            else if (raceWonBy(lane3Horse))
-            {
-                raceWinner = lane3Horse;
+                raceWinner = horse;
+                
             }
             if ( raceWinner !=null)
             {
@@ -105,9 +99,18 @@ public class Race1
                 raceWinner.setConfidence(raceWinner.getConfidence()+ 0.05);
             }
             
-            if( lane1Horse.hasFallen() && lane2Horse.hasFallen() && lane3Horse.hasFallen())
+            boolean allFall = true;
+            for(Horse1 horse:lane)
             {
-                System.out.println("All horses have fallen, no one wins");
+                if(horse != null && !horse.hasFallen())
+                {
+                    allFall = false;
+                    break;
+                }
+            }
+            if(allFall)
+            {
+                System.out.println("All Horses have fallen, no winner");
                 break;
             }
             //wait for 100 milliseconds
