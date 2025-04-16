@@ -169,9 +169,12 @@ public class Race1
         }
         
             //the probability that the horse will move forward depends on the confidence;
+        
+        boolean movedAlready = false;
         if (Math.random() < theHorse.getConfidence())
         {
             theHorse.moveForward();
+            movedAlready =true;
         }
 
         
@@ -179,7 +182,7 @@ public class Race1
         //the probability that the horse will fall is very small (max is 0.1)
         //but will also will depends exponentially on confidence 
         //so if you double the confidence, the probability that it will fall is *2
-        if (Math.random() < (0.1*theHorse.getConfidence()*theHorse.getConfidence()))
+        if (movedAlready && Math.random() < (0.1*theHorse.getConfidence()*theHorse.getConfidence()))
         {
             theHorse.fall();
         }
