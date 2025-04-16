@@ -58,6 +58,29 @@ public class Horse1
     {
         return this.accessory;
     }
+
+    public void setBreed(String breed)
+    {
+        this.breed = breed;
+    }
+    public void getCoatColour(String coatColour)
+    {
+        this.coatColour = coatColour;
+    }
+    public void getSaddle(String saddle)
+    {
+        this.saddle = saddle;
+    }
+    public void getHorseshoe(String horseshoe)
+    {
+        this.horseshoe = horseshoe;
+    }
+    public void getAccessory(String accessory)
+    {
+        this.accessory = accessory;
+    }
+
+    
     
     
     //Other methods of class Horse
