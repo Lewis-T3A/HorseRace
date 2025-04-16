@@ -89,7 +89,11 @@ public class Race1
             Horse1 raceWinner = null;
             for(Horse1 horse:lane)
             {
-                raceWinner = horse;
+                if(raceWonBy(horse))
+                {
+                    raceWinner = horse;
+                    break;
+                }
                 
             }
             if ( raceWinner !=null)
