@@ -36,8 +36,25 @@ public class Horse1
        this.saddle = saddle;
        this.horseshoe = horseshoe;
        this.accessory = accessory;
-    
     }
+    private void customisationSet()
+    {
+        if(getBreed().equals("Thoroughbred"))
+        {
+            setConfidence(this.confidence += 0.05);
+        }
+        else if (getBreed().equals("Arabian"))
+        {
+            setConfidence(this.confidence += 0.02);
+        }
+        else if (getBreed().equals("Quarter Horse"))
+        {
+            setConfidence(this.confidence += 0.03);
+        }
+
+        
+    }
+
     public String getBreed()
     {
         return this.breed;
