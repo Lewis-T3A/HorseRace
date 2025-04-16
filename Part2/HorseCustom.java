@@ -68,6 +68,20 @@ public class HorseCustom {
         frame2.add(panel2);
         frame2.setVisible(true);
         
+        Confirm.addActionListener(e -> {
+            Horse1[] horse2 = new Horse1[laneCount];
+            for(int i =0; i<laneCount; i++)
+            {
+                String breed = (String) breedChooser[i].getSelectedItem();
+                String colour = (String) colourChooser[i].getSelectedItem();
+                String symbol = symbolInput[i].getText();
+                String saddle = (String) saddleChooser[i].getSelectedItem();
+                String horseshoe = (String) horseshoeChooser[i].getSelectedItem();
+                String accessory = (String) accessoryChooser[i].getSelectedItem();
+            }
+            
+
+        });
     }
     
 
