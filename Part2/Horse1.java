@@ -13,6 +13,11 @@ public class Horse1
     private int distanceTravelled;
     private boolean fallen;
     private double confidence;
+    private String breed;
+    private String coatColour;
+    private String saddle;
+    private String horseshoe;
+    private String accessory;
     
       
     //Constructor of class Horse
