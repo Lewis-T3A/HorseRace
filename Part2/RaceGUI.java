@@ -51,19 +51,19 @@ public class RaceGUI
             String raceWeather = (String) WeatherChooser.getSelectedItem();
 
             JOptionPane.showMessageDialog(frame1,"Track Length" + trackLength +"\n Lane Count" + laneCount + "\n Track Shape" + trackShape + "\n Weather Condition" + raceWeather );
-        
+            
+            new HorseCustom(laneCount, horse2 -> {
+                Race1 Race = new Race1 (trackLength, trackShape, raceWeather);
 
-            Race1 Race = new Race1( trackLength, trackShape, raceWeather);
+                for(int i = 0; i < laneCount; i++)
+                {
+                    Race.addHorse(horse2[i], i + 1);
+                }
+                Race.startRace();
+            });
 
-            for (int i = 0; i < laneCount; i++) 
-            {
-                char symbol = (char) ('A' + i);
-                String name = "Horse " + (i + 1);
-                Horse1 horse = new Horse1(symbol, name, 0.6);
-                Race.addHorse(horse, i + 1);
-            }
-            Race.startRace();
-        
+            
+
         });
     }
 }

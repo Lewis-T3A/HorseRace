@@ -13,9 +13,7 @@ public class Race1
     private int raceLength;
     private String trackShape;
     private String raceWeather;
-    private Horse1 lane1Horse;
-    private Horse1 lane2Horse;
-    private Horse1 lane3Horse;
+    private Horse1[] lane;
     
 
     /**
@@ -24,7 +22,7 @@ public class Race1
      * 
      * @param distance the length of the racetrack (in metres/yards...)
      */
-    public Race1(int distance, String trackShape, String raceWeather)
+    public Race1(int distance, String trackShape, String raceWeather, int laneCount)
     {
         // first checks that the inputtes distance is not less than 0.
         if (distance <= 0)
@@ -35,9 +33,7 @@ public class Race1
         this.trackShape = trackShape;
         this.raceWeather = raceWeather;
         raceLength = distance;
-        lane1Horse = null;
-        lane2Horse = null;
-        lane3Horse = null;
+        this.lane = new Horse1[laneCount];
     }
     
     /**
