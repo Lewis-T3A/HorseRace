@@ -81,7 +81,7 @@ public class HorseCustom {
                 String accessory = (String) accessoryChooser[i].getSelectedItem();
 
                 Horse1 horse = new Horse1(symbol,"Horse " + (i+1),0.4,breed,colour,saddle,horseshoe,accessory);
-
+                horse2[i] = horse;
             }
             call.onHorseComplete(horse2);
             
