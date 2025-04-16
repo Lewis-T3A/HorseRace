@@ -44,21 +44,13 @@ public class Race1
      */
     public void addHorse(Horse1 theHorse, int laneNumber)
     {
-        if (laneNumber == 1)
+        if(laneNumber >= 1 && laneNumber <= lane.length)
         {
-            lane1Horse = theHorse;
-        }
-        else if (laneNumber == 2)
-        {
-            lane2Horse = theHorse;
-        }
-        else if (laneNumber == 3)
-        {
-            lane3Horse = theHorse;
+            lane[laneNumber-1] = theHorse;
         }
         else
         {
-            System.out.println("Cannot add horse to lane " + laneNumber + " because there is no such lane");
+            System.out.println("Cannot add Horse to lane" + laneNumber + "Because there is no such lane");
         }
     }
     
@@ -74,20 +66,13 @@ public class Race1
         boolean finished = false;
         
         //reset all the lanes if the Horse declared is not of null value/ has no inputs.(all horses not fallen and back to 0). 
-        if ( lane1Horse != null)
+        for(Horse1 horse: lane)
         {
-            lane1Horse.goBackToStart(); 
+            if(horse != null)
+            {
+                horse.goBackToStart();
+            }
         }
-        if ( lane2Horse != null)
-        {
-            lane2Horse.goBackToStart();
-        }
-        
-        if ( lane3Horse != null)
-        {
-            lane3Horse.goBackToStart();
-        }
-        
                       
         while (!finished)
         {
