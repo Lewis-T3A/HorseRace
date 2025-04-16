@@ -52,7 +52,14 @@ public class Horse1
             setConfidence(this.confidence += 0.03);
         }
 
-        
+        if(getHorseshoe().equals("Light"))
+        {
+            setConfidence(this.confidence += 0.02);
+        }
+        else if(getHorseshoe().equals("Heavy"))
+        {
+            setConfidence(this.confidence -= 0.02);
+        }
     }
 
     public String getBreed()
