@@ -1,7 +1,7 @@
 import java.awt.*;
 import javax.swing.*;
 public class HorseCustom {
-    public HorseCustom(int laneCount)
+    public HorseCustom(int laneCount, HorseCall call)
     {
         JFrame frame2 = new JFrame ( "Horse Customisation");
         frame2.setSize(1000,600);
@@ -83,15 +83,10 @@ public class HorseCustom {
                 Horse1 horse = new Horse1(symbol,"Horse " + (i+1),0.4,breed,colour,saddle,horseshoe,accessory);
 
             }
+            call.onHorseComplete(horse2);
             
 
         });
     }
-    
 
-
-    
-    public static void main(String[] args) {
-        new HorseCustom(4); // test with 3 horses
-    }
 }
