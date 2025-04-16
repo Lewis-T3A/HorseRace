@@ -36,6 +36,7 @@ public class Horse1
        this.saddle = saddle;
        this.horseshoe = horseshoe;
        this.accessory = accessory;
+       customisationSet();
     }
     private void customisationSet()
     {

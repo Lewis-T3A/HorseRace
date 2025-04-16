@@ -74,10 +74,14 @@ public class HorseCustom {
             {
                 String breed = (String) breedChooser[i].getSelectedItem();
                 String colour = (String) colourChooser[i].getSelectedItem();
-                String symbol = symbolInput[i].getText();
+                String symbolText = symbolInput[i].getText();
+                char symbol = symbolText.isEmpty() ? (char) ('A' + i) : symbolText.charAt(0);
                 String saddle = (String) saddleChooser[i].getSelectedItem();
                 String horseshoe = (String) horseshoeChooser[i].getSelectedItem();
                 String accessory = (String) accessoryChooser[i].getSelectedItem();
+
+                Horse1 horse = new Horse1(symbol,"Horse " + (i+1),0.4,breed,colour,saddle,horseshoe,accessory);
+
             }
             
 
