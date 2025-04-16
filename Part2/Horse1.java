@@ -24,13 +24,19 @@ public class Horse1
     /**
      * Constructor for objects of class Horse
      */
-    public Horse1(char horseSymbol, String horseName, double horseConfidence)
+    public Horse1(char horseSymbol, String horseName, double horseConfidence, String breed, String coatColour, String saddle, String horseshoe, String accessory)
     {
        this.name = horseName;
        this.symbol = horseSymbol;
        this.distanceTravelled = 0;
        this.fallen = false;
        this.confidence = horseConfidence;
+       this.breed = breed;
+       this.coatColour = coatColour;
+       this.saddle = saddle;
+       this.horseshoe = horseshoe;
+       this.accessory = accessory;
+    
     }
     
     
