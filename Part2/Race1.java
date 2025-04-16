@@ -162,11 +162,11 @@ public class Race1
         {
             theHorse.setConfidence(theHorse.getConfidence() - 0.05);
         }
-        else if (trackShape.equals("Line"))
+        else if (trackShape.equals("Oval"))
         {
             theHorse.setConfidence(theHorse.getConfidence() + 0.05);
         }
-        else if (trackShape.equals("Circle"))
+        else if (trackShape.equals("Line"))
         {
             theHorse.setConfidence(theHorse.getConfidence() + 0.01);
         }

@@ -19,7 +19,7 @@ public class RaceGUI
         JSpinner laneMod = new JSpinner(new SpinnerNumberModel(2,2,10,1));
         // Track Shape
         JLabel shape = new JLabel( "Track Shape;" );
-        JComboBox<String> shapeChooser = new JComboBox<>(new String[]{"Figure-Eight","Zigzag","Line","Cirlce"});
+        JComboBox<String> shapeChooser = new JComboBox<>(new String[]{"Figure-Eight","Zigzag","Oval","Line"});
         // Weather Condition
         JLabel Weather = new JLabel ( "Weather Condition:");
         JComboBox<String> WeatherChooser = new JComboBox<>(new String[]{"Dry","Muddy","Icy"});
