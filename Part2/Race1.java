@@ -1,4 +1,5 @@
 import java.util.concurrent.TimeUnit;
+import javax.swing.JTextArea;
 
 /**
  * A three-horse race, each horse running in its own lane
@@ -14,6 +15,7 @@ public class Race1
     private String trackShape;
     private String raceWeather;
     private Horse1[] lane;
+    private JTextArea raceOutput;
     
 
     /**
@@ -22,7 +24,7 @@ public class Race1
      * 
      * @param distance the length of the racetrack (in metres/yards...)
      */
-    public Race1(int distance, String trackShape, String raceWeather, int laneCount)
+    public Race1(int distance, String trackShape, String raceWeather, int laneCount, JTextArea raceOutput)
     {
         // first checks that the inputtes distance is not less than 0.
         if (distance <= 0)
@@ -34,6 +36,7 @@ public class Race1
         this.raceWeather = raceWeather;
         raceLength = distance;
         this.lane = new Horse1[laneCount];
+        this.raceOutput = raceOutput;
     }
     
     /**
@@ -216,19 +219,18 @@ public class Race1
      */
     private void printRace()
     {
-        System.out.print('\u000C');  //clear the terminal window
-        
-        multiplePrint('=',raceLength+3); //top edge of track
-        System.out.println();
-        
+        String raceText = ""; // for appending to
+        // printing the top of the track
+        raceText += multiplePrint('=', raceLength + 3) + "\n";
+        //printing the horse onto the track.
         for(Horse1 horse: lane)
         {
-            printLane(horse);
-            System.out.println();
+            raceText += printLane(horse) + "\n";
         }
-        
-        multiplePrint('=',raceLength+3); //bottom edge of track
-        System.out.println();    
+        // printing the bottom of the track
+        raceText += multiplePrint ( '=', raceLength + 3) + "\n";
+
+        raceOutput.setText(raceText);
     }
     
     /**
@@ -237,45 +239,46 @@ public class Race1
      * |           X                      |
      * to show how far the horse has run
      */
-    private void printLane(Horse1 theHorse)
+    private String printLane(Horse1 theHorse)
     {
+        //Printing the beginning of the Lane |
+        String laneText = "|";
+    
         if(theHorse == null)
         {
-            System.out.print('|');
-            multiplePrint(' ',raceLength);
-            System.out.print('|');
-            System.out.print("");
-            return;
+            laneText += multiplePrint( ' ', raceLength)  + '|';
+            return laneText;
         }
         //calculate how many spaces are needed before
         //and after the horse
         int spacesBefore = theHorse.getDistanceTravelled();
         int spacesAfter = raceLength - theHorse.getDistanceTravelled();
         
-        //print a | for the beginning of the lane
-        System.out.print('|');
+       
+        
         
         //print the spaces before the horse
-        multiplePrint(' ',spacesBefore);
+        laneText += multiplePrint(' ',spacesBefore);
         
         //if the horse has fallen then print dead
         //else print the horse's symbol
         if(theHorse.hasFallen())
         {
-            System.out.print('X');
+            laneText += "X";
         }
         else
         {
-            System.out.print(theHorse.getSymbol());
+            laneText += theHorse.getSymbol();
         }
         
         //print the spaces after the horse
-        multiplePrint(' ',spacesAfter);
+        laneText += multiplePrint(' ',spacesAfter);
         
         //print the | for the end of the track
-        System.out.print('|');
-
-        System.out.printf(" Name: %s ( Confidence: %.2f )", theHorse.getName(),theHorse.getConfidence());
+        laneText += ('|');
+        laneText += "Name: " + theHorse.getName();
+        laneText += " ( Confidence: " + String.format("%.2f", theHorse.getConfidence()) + " )";
+        return laneText;
     }
         
     
@@ -285,14 +288,14 @@ public class Race1
      * 
      * @param aChar the character to Print
      */
-    private void multiplePrint(char aChar, int times)
+    private String multiplePrint(char aChar, int times)
     {
-        int i = 0;
-        while (i < times)
+        String result = "";
+        for(int i = 0 ;i<times;i++)
         {
-            System.out.print(aChar);
-            i = i + 1;
+            result += aChar;
         }
+        return result;
     }
 }
 
