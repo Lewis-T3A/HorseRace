@@ -120,6 +120,7 @@ public class Race1
                 System.out.println("All Horses have fallen, no winner");
                 break;
             }
+            
             //wait for 100 milliseconds
             try{ 
                 TimeUnit.MILLISECONDS.sleep(100);
