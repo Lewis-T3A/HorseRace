@@ -9,6 +9,14 @@ public class RaceGUI
         frame1.setSize(600,400);
         JPanel panel1 = new JPanel(new GridLayout(5,2,10,10));
         frame1.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        JFrame raceScreen = new JFrame ( "Race Output");
+        JTextArea raceOutput = new JTextArea();
+        raceOutput.setFont(new Font("Monospaced",Font.PLAIN,14));
+        raceScreen.add(new JScrollPane(raceOutput));
+        raceScreen.setSize(1000,600);
+        raceScreen.setVisible(true);
+
         
         //Track length
         JLabel tracklength = new JLabel( "Track Length:" );
