@@ -1,5 +1,4 @@
 import java.util.concurrent.TimeUnit;
-import javax.swing.JTextArea;
 
 /**
  * A three-horse race, each horse running in its own lane
@@ -15,7 +14,6 @@ public class Race1
     private String trackShape;
     private String raceWeather;
     private Horse1[] lane;
-    private JTextArea raceOutput;
     
 
     /**
@@ -24,7 +22,6 @@ public class Race1
      * 
      * @param distance the length of the racetrack (in metres/yards...)
      */
-    public Race1(int distance, String trackShape, String raceWeather, int laneCount, JTextArea raceOutput)
     public Race1(int distance, String trackShape, String raceWeather, int laneCount)
     {
         // first checks that the inputtes distance is not less than 0.
@@ -120,7 +117,6 @@ public class Race1
                 System.out.println("All Horses have fallen, no winner");
                 break;
             }
-            
             //wait for 100 milliseconds
             try{ 
                 TimeUnit.MILLISECONDS.sleep(100);
@@ -220,10 +216,6 @@ public class Race1
      */
     private void printRace()
     {
-        String raceText = ""; // for appending to
-        // printing the top of the track
-        raceText += multiplePrint('=', raceLength + 3) + "\n";
-        //printing the horse onto the track.
         System.out.print('\u000C');  //clear the terminal window
         
         multiplePrint('=',raceLength+3); //top edge of track
@@ -231,14 +223,9 @@ public class Race1
         
         for(Horse1 horse: lane)
         {
-            raceText += printLane(horse) + "\n";
             printLane(horse);
             System.out.println();
         }
-        // printing the bottom of the track
-        raceText += multiplePrint ( '=', raceLength + 3) + "\n";
-
-        raceOutput.setText(raceText);
         
         multiplePrint('=',raceLength+3); //bottom edge of track
         System.out.println();    
@@ -250,16 +237,10 @@ public class Race1
      * |           X                      |
      * to show how far the horse has run
      */
-    private String printLane(Horse1 theHorse)
     private void printLane(Horse1 theHorse)
     {
-        //Printing the beginning of the Lane |
-        String laneText = "|";
-    
         if(theHorse == null)
         {
-            laneText += multiplePrint( ' ', raceLength)  + '|';
-            return laneText;
             System.out.print('|');
             multiplePrint(' ',raceLength);
             System.out.print('|');
@@ -271,37 +252,27 @@ public class Race1
         int spacesBefore = theHorse.getDistanceTravelled();
         int spacesAfter = raceLength - theHorse.getDistanceTravelled();
         
-       
-        
         //print a | for the beginning of the lane
         System.out.print('|');
         
         //print the spaces before the horse
-        laneText += multiplePrint(' ',spacesBefore);
         multiplePrint(' ',spacesBefore);
         
         //if the horse has fallen then print dead
         //else print the horse's symbol
         if(theHorse.hasFallen())
         {
-            laneText += "X";
             System.out.print('X');
         }
         else
         {
-            laneText += theHorse.getSymbol();
             System.out.print(theHorse.getSymbol());
         }
         
         //print the spaces after the horse
-        laneText += multiplePrint(' ',spacesAfter);
         multiplePrint(' ',spacesAfter);
         
         //print the | for the end of the track
-        laneText += ('|');
-        laneText += "Name: " + theHorse.getName();
-        laneText += " ( Confidence: " + String.format("%.2f", theHorse.getConfidence()) + " )";
-        return laneText;
         System.out.print('|');
 
         System.out.printf(" Name: %s ( Confidence: %.2f )", theHorse.getName(),theHorse.getConfidence());
@@ -314,19 +285,14 @@ public class Race1
      * 
      * @param aChar the character to Print
      */
-    private String multiplePrint(char aChar, int times)
     private void multiplePrint(char aChar, int times)
     {
-        String result = "";
-        for(int i = 0 ;i<times;i++)
         int i = 0;
         while (i < times)
         {
-            result += aChar;
             System.out.print(aChar);
             i = i + 1;
         }
-        return result;
     }
 }
 

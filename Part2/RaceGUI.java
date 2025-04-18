@@ -81,7 +81,6 @@ public class RaceGUI
             JOptionPane.showMessageDialog(frame1,"Track Length" + trackLength +"\n Lane Count" + laneCount + "\n Track Shape" + trackShape + "\n Weather Condition" + raceWeather );
             
             new HorseCustom(laneCount, horse2 -> {
-                Race1 Race = new Race1 (trackLength, trackShape, raceWeather, laneCount, raceOutput);
                 Race1 Race = new Race1 (trackLength, trackShape, raceWeather, laneCount);
 
                 for(int i = 0; i < laneCount; i++)
