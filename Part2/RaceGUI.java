@@ -10,12 +10,7 @@ public class RaceGUI
         JPanel panel1 = new JPanel(new GridLayout(5,2,10,10));
         frame1.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        JFrame raceScreen = new JFrame ( "Race Output");
-        JTextArea raceOutput = new JTextArea();
-        raceOutput.setFont(new Font("Monospaced",Font.PLAIN,14));
-        raceScreen.add(new JScrollPane(raceOutput));
-        raceScreen.setSize(1000,600);
-        raceScreen.setVisible(true);
+        
 
         //Track length 
         
@@ -80,16 +75,15 @@ public class RaceGUI
 
             JOptionPane.showMessageDialog(frame1,"Track Length" + trackLength +"\n Lane Count" + laneCount + "\n Track Shape" + trackShape + "\n Weather Condition" + raceWeather );
             
-            new HorseCustom(laneCount, horse2 -> {
-                Race1 Race = new Race1 (trackLength, trackShape, raceWeather, laneCount);
+            HorseCustom customRace = new HorseCustom(laneCount);
+            Horse1[] Horse2 = customRace.getHorses();
 
-                for(int i = 0; i < laneCount; i++)
-                {
-                    Race.addHorse(horse2[i], i + 1);
-                }
-                Race.startRace();
-                
-            });
+            Race1 Race = new Race1(trackLength,trackShape,raceWeather,laneCount);
+            for(int i = 0; i< Horse2.length; i++)
+            {
+                Race.addHorse(Horse2[i], i+1);
+            }
+            Race.startRace();
 
             
 

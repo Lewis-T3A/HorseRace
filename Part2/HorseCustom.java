@@ -1,13 +1,15 @@
 import java.awt.*;
 import javax.swing.*;
 public class HorseCustom {
-    public HorseCustom(int laneCount, HorseCall call)
+    private Horse1[] Horse2;
+    public HorseCustom(int laneCount)
     {
-        JFrame frame2 = new JFrame ( "Horse Customisation");
+        Horse2 = new Horse1[laneCount]; 
+        JDialog frame2 = new JDialog((Frame) null, "Horse Customisation", true);
         frame2.setSize(1000,600);
         JPanel panel2 = new JPanel ();
         panel2.setLayout(new BoxLayout(panel2,BoxLayout.Y_AXIS));
-        frame2.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+       
 
         JComboBox<String>[]breedChooser = new JComboBox[laneCount];
         JComboBox<String>[]colourChooser = new JComboBox[laneCount];
@@ -66,10 +68,10 @@ public class HorseCustom {
         panel2.add(new JLabel(""));
         panel2.add(Confirm);
         frame2.add(panel2);
-        frame2.setVisible(true);
+       
         
         Confirm.addActionListener(e -> {
-            Horse1[] horse2 = new Horse1[laneCount];
+            
             for(int i =0; i<laneCount; i++)
             {
                 String breed = (String) breedChooser[i].getSelectedItem();
@@ -80,13 +82,19 @@ public class HorseCustom {
                 String horseshoe = (String) horseshoeChooser[i].getSelectedItem();
                 String accessory = (String) accessoryChooser[i].getSelectedItem();
 
-                Horse1 horse = new Horse1(symbol,"Horse " + (i+1),0.4,breed,colour,saddle,horseshoe,accessory);
-                horse2[i] = horse;
+                Horse2[i] = new Horse1(symbol, "Horse " + (i + 1), 0.4, breed, colour, saddle, horseshoe, accessory);
+                
             }
-            call.onHorseComplete(horse2);
+           frame2.dispose();
             
-
+            
         });
+        frame2.setVisible(true);
+        
+    }
+    public Horse1[] getHorses()
+    {
+        return Horse2;
     }
 
 }

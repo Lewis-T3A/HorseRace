@@ -122,7 +122,7 @@ public class Race1
                 TimeUnit.MILLISECONDS.sleep(100);
             }catch(Exception e)
             {
-
+                e.printStackTrace();
             }
         }
     }
