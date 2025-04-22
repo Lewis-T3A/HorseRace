@@ -13,6 +13,7 @@ public class Horse1
     private int distanceTravelled;
     private boolean fallen;
     private double confidence;
+    //Declaring new Horse customisation variables.
     private String breed;
     private String coatColour;
     private String saddle;
@@ -31,13 +32,17 @@ public class Horse1
        this.distanceTravelled = 0;
        this.fallen = false;
        this.confidence = horseConfidence;
+
+       // new Horse customisation
        this.breed = breed;
        this.coatColour = coatColour;
        this.saddle = saddle;
        this.horseshoe = horseshoe;
        this.accessory = accessory;
+       // calls the method that will check the inputs and give differing values to the horses confidence.
        customisationSet();
     }
+    //method for changing the Horses confidence based upon Inputs given into the Horse customisation class.
     private void customisationSet()
     {
         if(getBreed().equals("Thoroughbred"))
