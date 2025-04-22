@@ -14,32 +14,22 @@ public class Race
     private Horse lane2Horse;
     private Horse lane3Horse;
 
-    /**
-     * Constructor for objects of class Race
-     * Initially there are no horses in the lanes
-     * 
-     * @param distance the length of the racetrack (in metres/yards...)
-     */
+    
     public Race(int distance)
     {
-        // first checks that the inputtes distance is not less than 0.
+        //Checks that the distance of the race is not less than 0, and if so then an exception would have to be thrown up
         if (distance <= 0)
         {
             throw new IllegalArgumentException("Cannot Have Negative Race Length");
         }
-        // initialise instance variables
+        // initialising the Horse lane variables
         raceLength = distance;
         lane1Horse = null;
         lane2Horse = null;
         lane3Horse = null;
     }
     
-    /**
-     * Adds a horse to the race in a given lane
-     * 
-     * @param theHorse the horse to be added to the race
-     * @param laneNumber the lane that the horse will be added to
-     */
+    // adds the Different horses to their separate lanes through an if statement.
     public void addHorse(Horse theHorse, int laneNumber)
     {
         if (laneNumber == 1)
@@ -60,18 +50,13 @@ public class Race
         }
     }
     
-    /**
-     * Start the race
-     * The horse are brought to the start and
-     * then repeatedly moved forward until the 
-     * race is finished
-     */
+    
     public void startRace()
     {
         //declare a local variable to tell us when the race is finished
         boolean finished = false;
         
-        //reset all the lanes if the Horse declared is not of null value/ has no inputs.(all horses not fallen and back to 0). 
+        //First checks that the horse in a lane is not null, and if so, it will send it back to the beginning, resetting its distance and fallen status.
         if ( lane1Horse != null)
         {
             lane1Horse.goBackToStart(); 
@@ -97,7 +82,7 @@ public class Race
             //print the race positions
             printRace();
             
-            //checks if any horse has reached the end, and if so, will allocate it to the variable raceWinner, which will go through the final statement to print and make finished equal to true, ending the while loop.
+            //checks if any horse has reached the end of the track, and if they have it will be changed to the raceWinner variable which will then print the winner.
             Horse raceWinner = null;
             if(raceWonBy(lane1Horse))
             {
@@ -111,13 +96,14 @@ public class Race
             {
                 raceWinner = lane3Horse;
             }
+            // prints the winner as soon as raceWinner is declared as not null/ a horse replaces null, increasing confidence for the next race.
             if ( raceWinner !=null)
             {
                 finished = true;
                 System.out.println("The winner of this race is: " + raceWinner.getName());
                 raceWinner.setConfidence(raceWinner.getConfidence()+ 0.05);
             }
-            
+            // checks all the horses status of fallen, and if all are true, then the race ends.
             if( lane1Horse.hasFallen() && lane2Horse.hasFallen() && lane3Horse.hasFallen())
             {
                 System.out.println("All horses have fallen, no one wins");
@@ -133,17 +119,11 @@ public class Race
         }
     }
     
-    /**
-     * Randomly make a horse move forward or fall depending
-     * on its confidence rating
-     * A fallen horse cannot move
-     * 
-     * @param theHorse the horse to be moved
-     */
+    
     private void moveHorse(Horse theHorse)
     {
-        //if the horse has fallen it cannot move, 
-        //so only run if it has not fallen
+        //if the horse has fallen it will not move, and the if not, the higher thr confidence the more likely the horse is to move.
+        
         if(theHorse == null) 
         {
             return;
@@ -165,13 +145,7 @@ public class Race
             }
         }
     }
-        
-    /** 
-     * Determines if a horse has won the race
-     *
-     * @param theHorse The horse we are testing
-     * @return true if the horse has won, false otherwise.
-     */
+    // checks which horse won the race by first checking that the horse is not null and has not fallen, and if so , by reaching the end, they are declared as winner.
     private boolean raceWonBy(Horse theHorse)
     {
         if(theHorse != null && !theHorse.hasFallen())
@@ -184,9 +158,7 @@ public class Race
         return false;
     }
     
-    /***
-     * Print the race on the terminal
-     */
+    // prints the race track as text onto the field.
     private void printRace()
     {
         System.out.print('\u000C');  //clear the terminal window
@@ -207,12 +179,7 @@ public class Race
         System.out.println();    
     }
     
-    /**
-     * print a horse's lane during the race
-     * for example
-     * |           X                      |
-     * to show how far the horse has run
-     */
+   // prints the Horse into their respective lane
     private void printLane(Horse theHorse)
     {
         if(theHorse == null)
@@ -255,12 +222,7 @@ public class Race
     }
         
     
-    /***
-     * print a character a given number of times.
-     * e.g. printmany('x',5) will print: xxxxx
-     * 
-     * @param aChar the character to Print
-     */
+    // prints multiple characters
     private void multiplePrint(char aChar, int times)
     {
         int i = 0;
