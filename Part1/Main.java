@@ -20,3 +20,5 @@ public class Main {
         myRace2.startRace();
     }
 }
+
+// This is my main class which is used to create Horse instances and then race instanced and run the race by calling startRace()
