@@ -16,12 +16,7 @@ public class Race1
     private Horse1[] lane;
     
 
-    /**
-     * Constructor for objects of class Race
-     * Initially there are no horses in the lanes
-     * 
-     * @param distance the length of the racetrack (in metres/yards...)
-     */
+    
     public Race1(int distance, String trackShape, String raceWeather, int laneCount)
     {
         // first checks that the inputtes distance is not less than 0.
@@ -37,12 +32,7 @@ public class Race1
         this.lane = new Horse1[laneCount];
     }
     
-    /**
-     * Adds a horse to the race in a given lane
-     * 
-     * @param theHorse the horse to be added to the race
-     * @param laneNumber the lane that the horse will be added to
-     */
+    
     public void addHorse(Horse1 theHorse, int laneNumber)
     {
         //adds Horses up to the amount of lanes created.
@@ -56,12 +46,7 @@ public class Race1
         }
     }
     
-    /**
-     * Start the race
-     * The horse are brought to the start and
-     * then repeatedly moved forward until the 
-     * race is finished
-     */
+   
     public void startRace()
     {
         //declare a local variable to tell us when the race is finished
@@ -76,42 +61,44 @@ public class Race1
             }
         }
         
-        // Apply one-time confidence modifiers based on track shape and weather
-for (Horse1 horse : lane) {
-    if (horse == null) continue;
+        //Only allows changes to confidence to happen once per horse rather than multiple times as the race loops.
+        for (Horse1 horse : lane) 
+        {
+            
+            if (horse == null) continue;
 
-    // Track shape adjustments
-    if(trackShape.equals("Figure-Eight")) 
-    {
-        horse.setConfidence(horse.getConfidence() - 0.01);
-    } 
-    else if (trackShape.equals("Zigzag")) 
-    {
-        horse.setConfidence(horse.getConfidence() - 0.05);
-    } 
-    else if (trackShape.equals("Oval")) 
-    {
-        horse.setConfidence(horse.getConfidence() + 0.05);
-    } 
-    else if (trackShape.equals("Line")) 
-    {
-        horse.setConfidence(horse.getConfidence() + 0.01);
-    }
+            // A set of if statements that check the shape of the track entered and will give a confidence modifier based upon that.
+            if(trackShape.equals("Figure-Eight")) 
+            {
+                horse.setConfidence(horse.getConfidence() - 0.01);
+            } 
+            else if (trackShape.equals("Zigzag")) 
+            {
+                horse.setConfidence(horse.getConfidence() - 0.05);
+            } 
+            else if (trackShape.equals("Oval")) 
+            {
+                horse.setConfidence(horse.getConfidence() + 0.05);
+            } 
+            else if (trackShape.equals("Line")) 
+            {
+                horse.setConfidence(horse.getConfidence() + 0.01);
+            }
 
-    
-    if(raceWeather.equals("Dry")) 
-    {
-        horse.setConfidence(horse.getConfidence() + 0.01);
-    } 
-    else if (raceWeather.equals("Muddy")) 
-    {
-        horse.setConfidence(horse.getConfidence() - 0.01);
-    } 
-    else if (raceWeather.equals("Icy")) 
-    {
-        horse.setConfidence(horse.getConfidence() - 0.05);
-    }
-}
+            // A set of if statements that checks the input of the weather, and will change confidence based upon this.
+            if(raceWeather.equals("Dry")) 
+            {
+                horse.setConfidence(horse.getConfidence() + 0.01);
+            } 
+            else if (raceWeather.equals("Muddy")) 
+            {
+                horse.setConfidence(horse.getConfidence() - 0.01);
+            } 
+            else if (raceWeather.equals("Icy")) 
+            {
+                horse.setConfidence(horse.getConfidence() - 0.05);
+            }
+        }
 
          // Keeps the Horses moving until the race is finished.             
         while (!finished)
@@ -169,13 +156,7 @@ for (Horse1 horse : lane) {
         }
     }
     
-    /**
-     * Randomly make a horse move forward or fall depending
-     * on its confidence rating
-     * A fallen horse cannot move
-     * 
-     * @param theHorse the horse to be moved
-     */
+    
     private void moveHorse(Horse1 theHorse)
     {
         //if the horse has fallen it cannot move, 
@@ -208,12 +189,9 @@ for (Horse1 horse : lane) {
         
     }
         
-    /** 
-     * Determines if a horse has won the race
-     *
-     * @param theHorse The horse we are testing
-     * @return true if the horse has won, false otherwise.
-     */
+    
+
+     // method for checking what horse has won the race, first checking that they are not fallen and that they exist.
     private boolean raceWonBy(Horse1 theHorse)
     {
         if(theHorse != null && !theHorse.hasFallen())
@@ -226,9 +204,7 @@ for (Horse1 horse : lane) {
         return false;
     }
     
-    /***
-     * Print the race on the terminal
-     */
+     // prints out the Race track and the Horses to each of their lanes.
     private void printRace()
     {
         System.out.print('\u000C');  //clear the terminal window
@@ -246,12 +222,8 @@ for (Horse1 horse : lane) {
         System.out.println();    
     }
     
-    /**
-     * print a horse's lane during the race
-     * for example
-     * |           X                      |
-     * to show how far the horse has run
-     */
+    
+    // used to print individual Horses to their lanes, and printing nothing if the Horse is null.
     private void printLane(Horse1 theHorse)
     {
         if(theHorse == null)
@@ -294,12 +266,7 @@ for (Horse1 horse : lane) {
     }
         
     
-    /***
-     * print a character a given number of times.
-     * e.g. printmany('x',5) will print: xxxxx
-     * 
-     * @param aChar the character to Print
-     */
+    // prints a character multiple times.
     private void multiplePrint(char aChar, int times)
     {
         int i = 0;
