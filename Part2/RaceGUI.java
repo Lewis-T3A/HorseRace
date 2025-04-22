@@ -39,7 +39,7 @@ public class RaceGUI
 
         //Start Button added to the bottom which will later collect values.
 
-        JButton start = new JButton ("Start");
+        JButton startButton = new JButton ("Start");
 
         // adding the length of the track modifer for the user to change ontop the panel
 
@@ -64,7 +64,7 @@ public class RaceGUI
         //adding the start button to the panel
 
         panel1.add(new JLabel());
-        panel1.add(start);
+        panel1.add(startButton);
 
         // adding the panel to the frame, and setting the frame to visible.
 
@@ -72,7 +72,7 @@ public class RaceGUI
         frame1.setVisible(true);
 
         // creating an action listener
-        start.addActionListener(e -> 
+        startButton.addActionListener(e -> 
         {
             // Used to get the inputed values from the user.
             int trackLength = (Integer) trackMod.getValue();

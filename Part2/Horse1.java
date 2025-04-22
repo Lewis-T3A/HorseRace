@@ -88,19 +88,19 @@ public class Horse1
     {
         this.breed = breed;
     }
-    public void getCoatColour(String coatColour)
+    public void setCoatColour(String coatColour)
     {
         this.coatColour = coatColour;
     }
-    public void getSaddle(String saddle)
+    public void setSaddle(String saddle)
     {
         this.saddle = saddle;
     }
-    public void getHorseshoe(String horseshoe)
+    public void setHorseshoe(String horseshoe)
     {
         this.horseshoe = horseshoe;
     }
-    public void getAccessory(String accessory)
+    public void setAccessory(String accessory)
     {
         this.accessory = accessory;
     }

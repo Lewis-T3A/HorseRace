@@ -29,7 +29,8 @@ public class Race1
         {
             throw new IllegalArgumentException("Cannot Have Negative Race Length");
         }
-        // initialise instance variables
+
+        // initialise instance variables including the new Horses.
         this.trackShape = trackShape;
         this.raceWeather = raceWeather;
         raceLength = distance;
@@ -44,6 +45,7 @@ public class Race1
      */
     public void addHorse(Horse1 theHorse, int laneNumber)
     {
+        //adds Horses up to the amount of lanes created.
         if(laneNumber >= 1 && laneNumber <= lane.length)
         {
             lane[laneNumber-1] = theHorse;
@@ -65,7 +67,7 @@ public class Race1
         //declare a local variable to tell us when the race is finished
         boolean finished = false;
         
-        //reset all the lanes if the Horse declared is not of null value/ has no inputs.(all horses not fallen and back to 0). 
+        // resets the lane of a Horse if it is not null, going through the whole array and checking each instance of  a Horse created.
         for(Horse1 horse: lane)
         {
             if(horse != null)
@@ -73,10 +75,48 @@ public class Race1
                 horse.goBackToStart();
             }
         }
-                      
+        
+        // Apply one-time confidence modifiers based on track shape and weather
+for (Horse1 horse : lane) {
+    if (horse == null) continue;
+
+    // Track shape adjustments
+    if(trackShape.equals("Figure-Eight")) 
+    {
+        horse.setConfidence(horse.getConfidence() - 0.01);
+    } 
+    else if (trackShape.equals("Zigzag")) 
+    {
+        horse.setConfidence(horse.getConfidence() - 0.05);
+    } 
+    else if (trackShape.equals("Oval")) 
+    {
+        horse.setConfidence(horse.getConfidence() + 0.05);
+    } 
+    else if (trackShape.equals("Line")) 
+    {
+        horse.setConfidence(horse.getConfidence() + 0.01);
+    }
+
+    
+    if(raceWeather.equals("Dry")) 
+    {
+        horse.setConfidence(horse.getConfidence() + 0.01);
+    } 
+    else if (raceWeather.equals("Muddy")) 
+    {
+        horse.setConfidence(horse.getConfidence() - 0.01);
+    } 
+    else if (raceWeather.equals("Icy")) 
+    {
+        horse.setConfidence(horse.getConfidence() - 0.05);
+    }
+}
+
+         // Keeps the Horses moving until the race is finished.             
         while (!finished)
         {
-            //move each horse
+            //moves each horse using the moveHorse method
             for(Horse1 horse: lane)
             {
                 moveHorse(horse);
@@ -85,7 +125,7 @@ public class Race1
             //print the race positions
             printRace();
             
-            //checks if any horse has reached the end, and if so, will allocate it to the variable raceWinner, which will go through the final statement to print and make finished equal to true, ending the while loop.
+            //checks if any horse has reached the end, and if so, it will declare the raceWinner to be that Horse.
             Horse1 raceWinner = null;
             for(Horse1 horse:lane)
             {
@@ -96,13 +136,15 @@ public class Race1
                 }
                 
             }
+            // ensuring that the racewinner cannot be a fallen horse or one that is not declared, and if not null, it will declare the rcae as finished.
             if ( raceWinner !=null)
             {
                 finished = true;
                 System.out.println("The winner of this race is: " + raceWinner.getName());
                 raceWinner.setConfidence(raceWinner.getConfidence()+ 0.05);
             }
-            
+            // code for stopping the race if all horses are finished, ensuring that the race doesnt loop infinitely.
+            // essentially checks that not all of the Horses have fallen, and if so, it will set allFall to false, but if not , it means all horses have fallsen so will meet the condition to stop the race.
             boolean allFall = true;
             for(Horse1 horse:lane)
             {
@@ -142,35 +184,8 @@ public class Race1
         {
             return;
         }
-        if(trackShape.equals("Figure-Eight"))
-        {
-            theHorse.setConfidence(theHorse.getConfidence() - 0.01);
-        }
-        else if (trackShape.equals("Zigzag"))
-        {
-            theHorse.setConfidence(theHorse.getConfidence() - 0.05);
-        }
-        else if (trackShape.equals("Oval"))
-        {
-            theHorse.setConfidence(theHorse.getConfidence() + 0.05);
-        }
-        else if (trackShape.equals("Line"))
-        {
-            theHorse.setConfidence(theHorse.getConfidence() + 0.01);
-        }
 
-        if(raceWeather.equals("Dry"))
-        {
-            theHorse.setConfidence(theHorse.getConfidence() + 0.01);
-        }
-        else if (raceWeather.equals("Muddy"))
-        {
-            theHorse.setConfidence(theHorse.getConfidence() - 0.01);
-        }
-        else if (raceWeather.equals("Icy"))
-        {
-            theHorse.setConfidence(theHorse.getConfidence() - 0.05);
-        }
+        
         
             //the probability that the horse will move forward depends on the confidence;
         
