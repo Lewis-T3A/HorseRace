@@ -2,8 +2,8 @@
 /**
  * Write a description of class Horse here.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author (Lewis John Millin) 
+ * @version (2.0)
  */
 public class Horse
 {
