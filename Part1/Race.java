@@ -4,8 +4,8 @@ import java.util.concurrent.TimeUnit;
  * A three-horse race, each horse running in its own lane
  * for a given distance
  * 
- * @author McRaceface
- * @version 1.0
+ * @author Lewis John Millin
+ * @version 8.0
  */
 public class Race
 {
